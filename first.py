@@ -39,9 +39,9 @@ def get_gender():
 
 # Function to validate gender
 def gender_validate(gender):
-    if(gender == "1" or "M" or "Male" or "m" or "male" ):
+    if gender in ["1","M","Male","m","male"] :
         print("Welcome Mr.",name)
-    elif(gender == "2" or "F" or "f" or "Female" or "female"):
+    elif gender in ["2","F","f","Female","female"]:
         print("Welcome Miss.",name)
     else:
         print("You have entered a wrong value")
@@ -69,8 +69,6 @@ def validate_dob(dob):
     if len(dob) != 8 :
         print("Try writing your date of birth in YYYYMMDD format")
         exit()    
-    if dob.isdigit()== True and len(dob) == 8:
-        pass
     elif dob.isdigit() == False :
         print("Try writing your date of birth in YYYYMMDD format")
         exit()
@@ -126,7 +124,7 @@ def eligibility():
     if age < 18:
         print("Your age is:", age)
         eligible = False
-    if age>= 18 :
+    else :
         print("As you are a major, You are eligible to vote.")
         eligible = True
 
@@ -195,7 +193,7 @@ def show():
     reset()
     print("Applied : " + Fore.CYAN + Style.BRIGHT + "Yes" )
     reset()  
-    print("If You need further info check in google.") 
+    print("If You need further info search on google.") 
 
 ### Main program starts here
 
