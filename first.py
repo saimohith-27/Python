@@ -3,8 +3,9 @@ from datetime import date
 from colorama import Fore, Style, init, Back
 
 init(autoreset=True)
+clear_screen = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
-
+'''
 print(Fore.CYAN + Style.BRIGHT + "Welcome to the Lucky Fortune Teller!")
 print(Style.RESET_ALL)  # Always reset to avoid affecting other text
 print(Fore.RED + "This text is red!")
@@ -12,10 +13,11 @@ print(Fore.GREEN + "This text is green.")
 print(Back.YELLOW + "This text has a yellow background.")
 print(Style.BRIGHT + "This is bright style text.")
 print(Style.RESET_ALL + "Back to normal text.")
+'''
 name = input("Enter your name : ")
 gender = int(input("Enter your gender \n1)Male \n2)Female: \n"))
-clear_screen = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 clear_screen()
+name = name.title()
 if(gender == 1):
     print("Welcome Mr.",name)
 elif(gender == 2):
@@ -40,7 +42,12 @@ def calculate_age(dob):
         age -= 1
     return age
 age = calculate_age(dob)
-print("Your age is:", age)
+clear_screen()
+if age < 0:
+    print("You have entered a wrong date of birth")
+    exit()
+elif age < 18:
+    print("Your age is:", age)
 if(age >= 18):   
     print("You are eligible to vote.")
     print(''' D'ye want to apply for vote?''')
@@ -51,10 +58,14 @@ if(age >= 18):
         if(Aadhar.isdigit() == False or len(Aadhar) != 12):
             print("You have entered a wrong Aadhar number")
             exit()
+        clear_screen()    
         print("You have successfully applied for vote")   
     elif(ans == '2'):
+        clear_screen()
+        print("You have chosen not to apply for vote")
         print("Thank you for your time")
     else:
+        clear_screen()
         print("You entered a wrong answer")
         exit()
 else: 
